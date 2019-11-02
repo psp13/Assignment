@@ -25,6 +25,7 @@
             margin-left: 5%;
         }
         /* FORM STYLES */
+        
         #container {
             margin-top: 100px;
             margin-left: 15%;
@@ -37,12 +38,11 @@
         .alert {
             display: none;
             margin-left: 5%;
-            font-weight: bold; 
+            font-weight: bold;
             font-size: 40px;
-
         }
+        /* Responsive Layout */
         
-        /* Responsive Layout */ 
         @media screen and (max-width:200px) {
             #container,
             .col-1,
@@ -57,16 +57,16 @@
 </head>
 
 <body>
-    
 
     <div id="container" align="center">
-    	<!---block to show that data is entered into database successfully-->
-    	<div class="alert">Your data has been sent</div>
-    	<br>
+        <!---block to show that data is entered into database successfully-->
+        <div class="alert">Your data has been sent</div>
+        <br>
         <form name="myform" action="#" onsubmit="return validateform()" method="POST" id="myform">
 
-            <div class="col-1" align="center">Name:
+            <div class="col-1" align="center"> Name:
                 <br>
+
             </div>
             <div class="col-2" align="center">
                 <p>
@@ -76,9 +76,9 @@
                 <p id="username" class="text-danger font-weight-bold"></p>
             </div>
 
-            <div class="col-1">
-                Email:
+            <div class="col-1"> Email:
                 <br>
+
             </div>
 
             <div class="col-2">
@@ -89,9 +89,9 @@
                 <p id="emailids" class="text-danger font-weight-bold"></p>
             </div>
 
-            <div class="col-1">
-                Contact no:
+            <div class="col-1"> Contact no:
                 <br>
+
             </div>
 
             <div class="col-2">
@@ -108,8 +108,7 @@
         </form>
 
         <script type="text/javascript">
-
-        	// Function to validate the data before it submit into database
+            // Function to validate the data before it submit into database
             function validateform() {
 
                 var error = " ";
@@ -167,8 +166,9 @@
         <!-- below link display the collection inside firebase database-->
         <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-database.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-analytics.js"></script>
-        
-        <script src="index.js"> //File name/path of firebase connection file.
+
+        <script src="index.js">
+            //File name/path of firebase connection file.
         </script>
     </div>
 </body>

@@ -1,0 +1,174 @@
+<html>
+
+<head>
+    <title>First Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style type="text/css">
+        * {
+            box-sizing: border-box;
+        }
+        
+        .col-1 {
+            margin-left: 5%;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        .col-2 {
+            margin-left: 5%;
+        }
+        
+        input[type=submit] {
+            margin-top: 10px;
+            padding: 12px 20px;
+            margin-left: 5%;
+        }
+        /* FORM STYLES */
+        #container {
+            margin-top: 100px;
+            margin-left: 15%;
+            width: 70%;
+            padding: 20px;
+            background-color: #bdb76b;
+            height: 70%%
+        }
+        
+        .alert {
+            display: none;
+            margin-left: 5%;
+            font-weight: bold
+
+        }
+        
+        /* Responsive Layout */ 
+        @media screen and (max-width:200px) {
+            #container,
+            .col-1,
+            .col-2,
+            input[type=text],
+            input[type=submit] {
+                grid-template-columns: 1fr;
+                width: 200%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    
+
+    <div id="container" align="center">
+    	<!---block to show that data is entered into database successfully-->
+    	<div class="alert">Your message has been sent</div>
+    	<br>
+        <form name="myform" action="#" onsubmit="return validateform()" method="POST" id="myform">
+
+            <div class="col-1" align="center">Name:
+                <br>
+            </div>
+            <div class="col-2" align="center">
+                <p>
+                    <input type="text" name="user" id="user">
+                    <br>
+                </p>
+                <p id="username" class="text-danger font-weight-bold"></p>
+            </div>
+
+            <div class="col-1">
+                Email:
+                <br>
+            </div>
+
+            <div class="col-2">
+                <p>
+                    <input type="text" name="email" id="email">
+                    <br>
+                </p>
+                <p id="emailids" class="text-danger font-weight-bold"></p>
+            </div>
+
+            <div class="col-1">
+                Contact no:
+                <br>
+            </div>
+
+            <div class="col-2">
+                <p>
+                    <input type="text" name="contact" id="contact">
+                    <br>
+                </p>
+                <p id="contacts" class="text-danger font-weight-bold"></p>
+            </div>
+
+            <input type="submit" value="submit" onclick="return validateform()">
+            <br>
+
+        </form>
+
+        <script type="text/javascript">
+
+        	// Function to validate the data before it submit into database
+            function validateform() {
+
+                var error = " ";
+
+                var user = document.getElementById('user').value;
+                var email = document.getElementById('email').value;
+                var contact = document.getElementById('contact').value;
+
+                if (user == "") {
+                    document.getElementById('username').innerHTML = " ** Please fill the username field";
+                    return false;
+                }
+                if ((user.length <= 2) || (user.length > 20)) {
+                    document.getElementById('username').innerHTML = " ** Username lenght must be between 2 and 20";
+                    return false;
+                }
+                if (!isNaN(user)) {
+                    document.getElementById('username').innerHTML = " ** only characters are allowed";
+                    return false;
+                }
+
+                if (contact == "") {
+                    document.getElementById('contacts').innerHTML = " ** Please fill the mobile Number field";
+                    return false;
+                }
+                if (isNaN(contact)) {
+                    document.getElementById('contacts').innerHTML = " ** user must write digits only not characters";
+                    return false;
+                }
+                if (contact.length != 10) {
+                    document.getElementById('contacts').innerHTML = " ** Mobile Number must be 10 digits only";
+                    return false;
+                }
+
+                if (email == "") {
+                    document.getElementById('emailids').innerHTML = " ** Please fill the email idx` field";
+                    return false;
+                }
+                if (email.indexOf('@') <= 0) {
+                    document.getElementById('emailids').innerHTML = " ** @ Invalid Position";
+                    return false;
+                }
+
+                if ((email.charAt(email.length - 4) != '.') && (email.charAt(email.length - 3) != '.')) {
+                    document.getElementById('emailids').innerHTML = " ** . Invalid Position";
+                    return false;
+                }
+
+            }
+        </script>
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-database.js"></script>
+
+        
+        <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-analytics.js"></script>
+        <script src="index.js">
+        </script>
+    </div>
+</body>
+
+</html>
